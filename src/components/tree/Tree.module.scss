@@ -1,0 +1,77 @@
+$child-elem-fill: #ff0032;
+$child-elem-stroke: none;
+$child-elem-text-fill: #fff;
+
+$not-child-elem-fill: #fff;
+$not-child-elem-stroke: #ff0032;
+$not-child-elem-text-fill: #ff0032;
+
+$child-elem-fill-searched: #5733b4;
+$child-elem-stroke-searched: none;
+$child-elem-text-fill-searched: #fff;
+
+$not-child-elem-fill-searched: #fff;
+$not-child-elem-stroke-searched: #5733b4;
+$not-child-elem-text-fill-searched: #5733b4;
+
+.tree {
+  position: relative;
+  &_wrapper {
+    flex: 1;
+
+    &__title {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      color: $not-child-elem-text-fill-searched;
+    }
+  }
+}
+
+.treeNode {
+  rect {
+    fill: $not-child-elem-fill;
+    stroke: $not-child-elem-stroke;
+  }
+
+  text {
+    fill: $not-child-elem-text-fill;
+  }
+
+  .position {
+    font-style: italic;
+  }
+
+  &.searchedNode {
+    transform: scale(120%);
+    rect {
+      stroke: $not-child-elem-stroke-searched;
+    }
+
+    text {
+      fill: $not-child-elem-text-fill-searched;
+    }
+  }
+
+  &.children {
+    rect {
+      fill: $child-elem-fill;
+      stroke: $child-elem-stroke;
+    }
+
+    text {
+      fill: $child-elem-text-fill;
+    }
+
+    &.searchedNode {
+      rect {
+        stroke: $child-elem-stroke-searched;
+        fill: $child-elem-fill-searched;
+      }
+
+      text {
+        fill: $child-elem-text-fill-searched;
+      }
+    }
+  }
+}

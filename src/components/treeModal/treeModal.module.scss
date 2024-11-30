@@ -1,0 +1,51 @@
+.tree_modal {
+  &.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0000004f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    display: none;
+    &.active {
+      display: flex;
+    }
+  }
+
+  .modal {
+    &_wrap {
+      background-color: #fff;
+      padding: 24px;
+      width: 400px;
+      border-radius: 12px;
+    }
+
+    &_header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .close_icon {
+        cursor: pointer;
+        img {
+          height: 25px;
+        }
+
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+
+    &_content {
+      padding: 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+}

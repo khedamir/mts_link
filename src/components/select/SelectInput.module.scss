@@ -1,0 +1,79 @@
+.select_input {
+  position: relative;
+  width: 100%;
+  font-family: Arial, sans-serif;
+
+  font-size: 14px;
+}
+
+.select_input__control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #585858;
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.select_input__arrow {
+  transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 16px;
+  }
+}
+
+.select_input__arrow.open {
+  transform: rotate(180deg);
+}
+
+.select_input__menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+  max-height: 150px;
+  overflow-y: hidden;
+
+  .menu_wrapper {
+    max-height: 150px;
+    overflow-y: scroll;
+    /* Стилизация скроллбара для Webkit (Chrome, Edge, Safari) */
+    &::-webkit-scrollbar {
+      width: 3px; /* Ширина скроллбара */
+      height: 3px; /* Высота скроллбара (для горизонтальных скроллов) */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #aaa; /* Цвет ползунка */
+      border-radius: 4px; /* Радиус углов ползунка */
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f0f0f0; /* Цвет трека (фона скроллбара) */
+      border-radius: 4px; /* Радиус углов трека */
+    }
+  }
+}
+
+.select_input__option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.select_input__option:hover {
+  background: #ff0032;
+  color: #fff;
+}

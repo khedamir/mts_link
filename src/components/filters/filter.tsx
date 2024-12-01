@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import styles from "./filters.module.scss";
 import { ErrorMessage, Field } from "formik";
 

@@ -1,19 +1,5 @@
 import axios from "axios";
 
-type getUpdateTreePropss = {
-  id: number;
-  full_name: string;
-  number: string;
-  address: string;
-  city: string;
-  job_name: string;
-  role_id: string;
-  parent_id: number;
-  department_id: string;
-  block_id: string;
-  subdivision_id: string;
-};
-
 type getUpdateTreeProps = {
   full_name: string;
   city: string;

@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
-import { CustomNodeElementProps } from "react-d3-tree";
 import styles from "./Tree.module.scss";
 import { useTreeContext } from "../../context/treeContext";
 
 // Кастомный компонент для узла
-export const CustomNode = ({
-  nodeDatum,
-  toggleNode,
-  hierarchyPointNode,
-}: CustomNodeElementProps) => {
+export const CustomNode = ({ nodeDatum, toggleNode }: any) => {
   const [searchedNode, setSearchedNode] = useState(false);
   const { modalActive, setModalActive, setModalData } = useTreeContext();
 

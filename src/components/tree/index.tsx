@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState } from "react";
-import Tree from "react-d3-tree";
+import Tree, { RawNodeDatum } from "react-d3-tree";
 import styles from "./Tree.module.scss";
 import { CustomNode } from "./customNode";
 import { useTreeContext } from "../../context/treeContext";
 
 const OrgTree = () => {
   const treeContainerRef = useRef<Tree>(null);
-  const { treeData, setTreeData } = useTreeContext();
+  const { treeData } = useTreeContext();
   const [translate, setTranslate] = useState({ x: 0, y: 0 });
   const [dimensionsData, setDimensionsData] = useState({ width: 0, height: 0 });
 
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (containerRef.current) {
@@ -26,7 +26,7 @@ const OrgTree = () => {
       {treeData ? (
         <Tree
           ref={treeContainerRef}
-          data={treeData}
+          data={treeData as unknown as RawNodeDatum}
           orientation="vertical"
           pathFunc="step"
           translate={translate}

@@ -1,20 +1,48 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { treeServices } from "../services/tree.service";
-import { buildHierarchy } from "../utils/buildHierarchy";
 
-const TreeContext = createContext({
+type NodeType = {
+  id: number;
+  full_name: string;
+  number: string;
+  address: string;
+  city: string;
+  job_name: string;
+  role_name: string;
+  parent_id: number;
+  department_name: string;
+  block_name: string;
+  subdivision_name: string;
+  office_name: string;
+  children: NodeType;
+};
+
+type treeDataType = NodeType[];
+
+interface ITreeContext {
+  treeData: treeDataType | null;
+  setTreeData: (_v: any) => void;
+  modalActive: boolean;
+  setModalActive: (_v: boolean) => void;
+  modalData: NodeType | null;
+  setModalData: (_v: any) => void;
+}
+
+const initialData: ITreeContext = {
   treeData: null,
-  setTreeData: (v: any) => {},
+  setTreeData: (_v: any) => {},
   modalActive: false,
-  setModalActive: (v: boolean) => {},
-  modalData: {},
-  setModalData: (v: any) => {},
-});
+  setModalActive: (_v: boolean) => {},
+  modalData: null,
+  setModalData: (_v: any) => {},
+};
+
+const TreeContext = createContext(initialData);
 
 const TreeContextProvider = (props: any) => {
-  const [treeData, setTreeData] = useState<any | null>(null);
+  const [treeData, setTreeData] = useState<treeDataType | null>(null);
   const [modalActive, setModalActive] = useState(false);
-  const [modalData, setModalData] = useState();
+  const [modalData, setModalData] = useState<NodeType | null>(null);
 
   useEffect(() => {
     treeServices
@@ -30,7 +58,7 @@ const TreeContextProvider = (props: any) => {
       })
       .then((result) => {
         console.log(result);
-        setTreeData(buildHierarchy(result.data));
+        // setTreeData(buildHierarchy(result.data));
       });
   }, []);
 

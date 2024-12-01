@@ -2,7 +2,7 @@ import SelectInput from "../select";
 import styles from "./filters.module.scss";
 import Filter from "./filter";
 import { Form, Formik } from "formik";
-import { treeFiltersServices, treeServices } from "../../services/tree.service";
+import { treeFiltersServices } from "../../services/tree.service";
 import { useEffect, useState } from "react";
 import burgerIcon from "../../assets/burger-icon.svg";
 
@@ -78,7 +78,6 @@ const Filters = () => {
         <h2 className={styles.title}>Характеристики</h2>
 
         <img onClick={() => setClosed(!closed)} src={burgerIcon} alt="" />
-        {/* <p onClick={() => setClosed(!closed)}>b</p> */}
       </header>
       {filtersData && (
         <Formik

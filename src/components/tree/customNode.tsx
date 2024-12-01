@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import styles from "./Tree.module.scss";
 import { useTreeContext } from "../../context/treeContext";
 
 // Кастомный компонент для узла
 export const CustomNode = ({ nodeDatum, toggleNode }: any) => {
-  const [searchedNode, setSearchedNode] = useState(false);
+  // const [searchedNode, setSearchedNode] = useState(false);
   const { modalActive, setModalActive, setModalData } = useTreeContext();
 
   // useEffect(() => {
@@ -21,7 +21,7 @@ export const CustomNode = ({ nodeDatum, toggleNode }: any) => {
 
   return (
     <g
-      className={`${styles.treeNode} ${searchedNode && styles.searchedNode} ${
+      className={`${styles.treeNode} ${
         nodeDatum.children?.length && styles.children
       }`}
     >

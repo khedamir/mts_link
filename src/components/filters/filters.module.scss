@@ -53,6 +53,12 @@
       h2 {
         display: none;
       }
+
+      &_wrap {
+        img {
+          display: none;
+        }
+      }
     }
 
     .filter_list {

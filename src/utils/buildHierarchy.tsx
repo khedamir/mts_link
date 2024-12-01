@@ -34,3 +34,30 @@ export const buildHierarchy = (data: Employee[]): Employee[] => {
 
   return result;
 };
+
+export const buildHierarchyFromNestedArrays = (
+  nestedData: Employee[][]
+): Employee[] => {
+  // Объединяем все массивы в один
+  const flatData = nestedData.flat();
+
+  // Создаем словарь для быстрого доступа по id
+  const map: { [key: number]: Employee } = {};
+  flatData.forEach((item) => {
+    map[item.id] = { ...item, children: [] }; // Инициализируем массив children
+  });
+
+  // Создаем иерархию
+  const result: Employee[] = [];
+  flatData.forEach((item) => {
+    if (item.parent_id === 0) {
+      // Если элемент корневой, добавляем его в результат
+      result.push(map[item.id]);
+    } else if (map[item.parent_id]) {
+      // Если элемент имеет родителя, добавляем его в children родителя
+      map[item.parent_id].children?.push(map[item.id]);
+    }
+  });
+
+  return result;
+};

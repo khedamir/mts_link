@@ -1,4 +1,5 @@
 import axios from "axios";
+import { buildHierarchyFromNestedArrays } from "../utils/buildHierarchy";
 
 type getUpdateTreeProps = {
   id: number;
@@ -15,7 +16,15 @@ type getUpdateTreeProps = {
 };
 
 export const treeServices = {
-  async getTree() {},
+  async getTree() {
+    const { data } = await axios.get(
+      "https://employeesmts-production.up.railway.app/api/employer"
+    );
+
+    console.log(buildHierarchyFromNestedArrays(data));
+
+    return data;
+  },
 
   async getUpdateTree(values: getUpdateTreeProps) {
     const { data } = await axios.post(

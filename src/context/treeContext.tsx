@@ -1,6 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { treeServices } from "../services/tree.service";
-import { buildHierarchy } from "../utils/buildHierarchy";
+import {
+  buildHierarchy,
+  buildHierarchyFromNestedArrays,
+} from "../utils/buildHierarchy";
 
 const data: NodeType[] = [
   {
@@ -95,22 +98,9 @@ const TreeContextProvider = (props: any) => {
 
   useEffect(() => {
     treeServices
-      .getUpdateTree({
-        id: 0,
-        full_names: "Алекс",
-        number: "",
-        address: "",
-        city: "",
-        job_name: "",
-        role_id: "1",
-        parent_id: 1,
-        department_id: "",
-        block_id: "",
-        subdivision_id: "",
-      })
+      .getTree()
       .then((result) => {
-        console.log(result);
-        setTreeData(buildHierarchy(result.data));
+        setTreeData(buildHierarchyFromNestedArrays(result));
       })
       .catch(() => {
         setTreeData(buildHierarchy(data));

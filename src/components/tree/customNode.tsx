@@ -7,12 +7,12 @@ export const CustomNode = ({ nodeDatum, toggleNode }: any) => {
   const [searchedNode, setSearchedNode] = useState(false);
   const { modalActive, setModalActive, setModalData } = useTreeContext();
 
-  useEffect(() => {
-    if (nodeDatum.full_name === "Комаров Александр") {
-      toggleNode();
-      setSearchedNode(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (nodeDatum.full_name === "Комаров Александр") {
+  //     toggleNode();
+  //     setSearchedNode(true);
+  //   }
+  // }, []);
 
   const toggleModal = () => {
     setModalActive(!modalActive);

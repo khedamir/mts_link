@@ -96,14 +96,17 @@ const TreeContextProvider = (props: any) => {
   useEffect(() => {
     treeServices
       .getUpdateTree({
-        full_name: "Алекс",
+        id: 0,
+        full_names: "Алекс",
+        number: "",
+        address: "",
         city: "",
-        job_name: "0",
-        role_id: "0",
-        parent_id: 0,
-        department_id: "0",
-        block_id: "0",
-        subdivision_id: "0",
+        job_name: "",
+        role_id: "1",
+        parent_id: 1,
+        department_id: "",
+        block_id: "",
+        subdivision_id: "",
       })
       .then((result) => {
         console.log(result);

@@ -22,8 +22,9 @@ $not-child-elem-text-fill-searched: #5733b4;
 
     &__title {
       position: absolute;
-      top: 10px;
-      right: 16px;
+      top: 32px;
+      width: 100%;
+      text-align: center;
       color: $not-child-elem-text-fill-searched;
     }
 
@@ -33,7 +34,7 @@ $not-child-elem-text-fill-searched: #5733b4;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #ff0032;
+      color: #5733b4;
     }
   }
 }

@@ -21,7 +21,7 @@
     &_wrap {
       background-color: #fff;
       padding: 24px;
-      width: 400px;
+      width: 500px;
       border-radius: 12px;
     }
 
@@ -47,6 +47,16 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+
+      &_info {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        color: #5733b4;
+        font-style: italic;
+        margin: 12px 0;
+        margin-top: 0;
+      }
     }
   }
 }

@@ -36,6 +36,12 @@
     align-items: center;
     gap: 12px;
 
+    &_wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     img {
       height: 30px;
     }

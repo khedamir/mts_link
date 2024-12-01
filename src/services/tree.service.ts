@@ -1,7 +1,10 @@
 import axios from "axios";
 
 type getUpdateTreeProps = {
-  full_name: string;
+  id: number;
+  full_names: string;
+  number: string;
+  address: string;
   city: string;
   job_name: string;
   role_id: string;
@@ -17,7 +20,7 @@ export const treeServices = {
   async getUpdateTree(values: getUpdateTreeProps) {
     const { data } = await axios.post(
       "https://employeesmts-production.up.railway.app/api/employers",
-      { id: 0, number: "", address: "", ...values }
+      values
     );
 
     return data;

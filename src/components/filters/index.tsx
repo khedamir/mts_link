@@ -80,7 +80,7 @@ const Filters = () => {
     // setClosed(true);
 
     treeServices.getUpdateTree(FiltersData).then((result) => {
-      setTreeData(buildHierarchy(result));
+      setTreeData(buildHierarchy(result.data));
     });
   };
 

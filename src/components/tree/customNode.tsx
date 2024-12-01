@@ -8,7 +8,7 @@ export const CustomNode = ({ nodeDatum, toggleNode }: any) => {
   const { modalActive, setModalActive, setModalData } = useTreeContext();
 
   useEffect(() => {
-    if (nodeDatum.name === "Ольга Орлова") {
+    if (nodeDatum.full_name === "Комаров Александр") {
       toggleNode();
       setSearchedNode(true);
     }
@@ -27,9 +27,9 @@ export const CustomNode = ({ nodeDatum, toggleNode }: any) => {
     >
       {/* Прямоугольник */}
       <rect
-        width="200"
+        width="250"
         height="60"
-        x="-100"
+        x="-125"
         y="-30"
         rx="6"
         ry="6"

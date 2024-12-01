@@ -7,7 +7,7 @@
   position: relative;
   padding-bottom: 104px;
   position: relative;
-  z-index: 10000;
+  z-index: 100;
   background-color: #fff;
 
   .filter {
@@ -34,6 +34,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 12px;
 
     img {
       height: 30px;

@@ -1,22 +1,36 @@
-export const buildHierarchy = () => {
-  // // Создаем словарь для быстрого доступа по id
-  // const map = {};
-  // data.forEach((item) => {
-  //   map[item.id] = { ...item, children: [] };
-  // });
+interface Employee {
+  id: number;
+  full_name: string;
+  number: string;
+  address: string;
+  city: string;
+  job_name: string;
+  role_name: string;
+  parent_id: number;
+  department_name: string;
+  block_name: string;
+  subdivision_name: string;
+  office_name: string;
+  children: Employee[] | null;
+}
 
-  // // Создаем иерархию
-  // const result = [];
-  // data.forEach((item) => {
-  //   if (item.manager_id === 0) {
-  //     // Если это корневой элемент, добавляем в результат
-  //     result.push(map[item.id]);
-  //   } else if (map[item.manager_id]) {
-  //     // Если есть менеджер, добавляем в его Children
-  //     map[item.manager_id].children.push(map[item.id]);
-  //   }
-  // });
+export const buildHierarchy = (data: Employee[]): Employee[] => {
+  // Создаем словарь для быстрого доступа по id
+  const map: { [key: number]: Employee } = {};
+  data.forEach((item) => {
+    map[item.id] = { ...item, children: [] }; // Инициализируем массив children
+  });
 
-  // return result;
-  return [];
+  const result: Employee[] = [];
+  data.forEach((item) => {
+    if (item.parent_id === 0) {
+      // Если нет родителя, добавляем в корень
+      result.push(map[item.id]);
+    } else if (map[item.parent_id]) {
+      // Если есть родитель, добавляем в его children
+      map[item.parent_id].children?.push(map[item.id]);
+    }
+  });
+
+  return result;
 };

@@ -1,5 +1,54 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { treeServices } from "../services/tree.service";
+import { buildHierarchy } from "../utils/buildHierarchy";
+
+const data: NodeType[] = [
+  {
+    id: 1,
+    full_name: "Смирнов Александр",
+    number: "89789558544",
+    address: "проспект Мира, 14, 3 этаж, офис 301",
+    city: "Москва",
+    job_name: "Председатель банка",
+    role_name: "руководство",
+    parent_id: 0,
+    department_name: "Дополнительный офис 2",
+    block_name: "Корпоративный блок",
+    subdivision_name: "-",
+    office_name: "",
+    children: null,
+  },
+  {
+    id: 3,
+    full_name: "Ильина Александра",
+    number: "79014813949",
+    address: "проспект Мира, 14, 3 этаж, офис 303",
+    city: "Москва",
+    job_name: "Заместитель председателя банка",
+    role_name: "руководство",
+    parent_id: 1,
+    department_name: "-",
+    block_name: "Розничный блок",
+    subdivision_name: "-",
+    office_name: "",
+    children: null,
+  },
+  {
+    id: 4,
+    full_name: "Комаров Александр",
+    number: "79667036549",
+    address: "проспект Мира, 14, 2 этаж, место 24",
+    city: "Москва",
+    job_name: "Директор управления",
+    role_name: "руководство",
+    parent_id: 3,
+    department_name: "-",
+    block_name: "Корпоративный блок",
+    subdivision_name: "Управление по работе с филиалами",
+    office_name: "",
+    children: null,
+  },
+];
 
 type NodeType = {
   id: number;
@@ -14,7 +63,7 @@ type NodeType = {
   block_name: string;
   subdivision_name: string;
   office_name: string;
-  children: NodeType;
+  children: NodeType[] | null;
 };
 
 type treeDataType = NodeType[];
@@ -58,7 +107,10 @@ const TreeContextProvider = (props: any) => {
       })
       .then((result) => {
         console.log(result);
-        // setTreeData(buildHierarchy(result.data));
+        setTreeData(buildHierarchy(result.data));
+      })
+      .catch(() => {
+        setTreeData(buildHierarchy(data));
       });
   }, []);
 

@@ -15,8 +15,9 @@ $not-child-elem-stroke-searched: #5733b4;
 $not-child-elem-text-fill-searched: #5733b4;
 
 .tree {
-  position: relative;
   &_wrapper {
+    position: relative;
+    z-index: -1;
     flex: 1;
 
     &__title {
@@ -25,6 +26,28 @@ $not-child-elem-text-fill-searched: #5733b4;
       right: 16px;
       color: $not-child-elem-text-fill-searched;
     }
+
+    .loading {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ff0032;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .tree_wrapper__title {
+    font-size: 22px;
+    text-align: right;
+  }
+}
+
+@media (max-width: 500px) {
+  .tree_wrapper__title {
+    width: 300px;
   }
 }
 

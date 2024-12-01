@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { treeServices } from "../services/tree.service";
-import { buildHierarchy } from "../components/utils/buildHierarchy";
+import { buildHierarchy } from "../utils/buildHierarchy";
 
 const TreeContext = createContext({
   treeData: null,

@@ -4,6 +4,7 @@ import Filter from "./filter";
 import { Form, Formik } from "formik";
 import { treeFiltersServices, treeServices } from "../../services/tree.service";
 import { useEffect, useState } from "react";
+import burgerIcon from "../../assets/burger-icon.svg";
 
 type FormValuesType = {
   full_name: string;
@@ -34,6 +35,7 @@ interface FiltersDataType {
 }
 
 const Filters = () => {
+  const [closed, setClosed] = useState(false);
   const [filtersData, setFiltersData] = useState<FiltersDataType | null>(null);
 
   const [block, setBlock] = useState<FilterType | null>(null);
@@ -65,17 +67,25 @@ const Filters = () => {
     };
 
     console.log(FiltersData);
+    setClosed(true);
 
     // treeServices.getUpdateTree(FiltersData);
   };
 
   return (
-    <div className={styles.filters}>
+    <div className={`${styles.filters} ${closed && styles.closed}`}>
       <header className={styles.filters_header}>
         <h2 className={styles.title}>Характеристики</h2>
+
+        <img onClick={() => setClosed(!closed)} src={burgerIcon} alt="" />
+        {/* <p onClick={() => setClosed(!closed)}>b</p> */}
       </header>
       {filtersData && (
-        <Formik initialValues={initialState} onSubmit={handleSubmit}>
+        <Formik
+          className={styles.filters_form}
+          initialValues={initialState}
+          onSubmit={handleSubmit}
+        >
           <Form className={styles.filter_list}>
             <Filter
               title="ФИО сотрудника"

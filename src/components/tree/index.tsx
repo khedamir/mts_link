@@ -35,7 +35,7 @@ const OrgTree = () => {
           renderCustomNodeElement={(rd3tProps) => <CustomNode {...rd3tProps} />}
         />
       ) : (
-        <div className="loading">
+        <div className={styles.loading}>
           <p>Loading...</p>
         </div>
       )}
